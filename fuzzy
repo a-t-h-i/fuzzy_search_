@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rg --line-number --with-filename --color=always --glob '*.cs' --glob '*.chtml' --glob '*.json' . | \
+fzf --ansi --delimiter : --preview 'batcat --style=numbers --color=always {1} --highlight-line {2}' --preview-window=~8,+{2}-5 \
+  --bind "enter:execute('/mnt/c/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/devenv.exe' ./{1} /Edit /Command 'Edit.GoTo {2}')"
